@@ -13,16 +13,16 @@
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-    <div class="chat chat_support" id="chat_in_support">
-      <div class="in_support_header">
-        <span>Online Support ... </span>
-        <div class="icon_close" onclick="closeChat();">
+    <div class="chat chat-support" id="chatInSupport">
+      <div class="in-support-header">
+        <span>Online Support...</span>
+        <div class="icon-close" onclick="closeChat()">
           <img src="/images/close.png" />
         </div>
       </div>
 
-      <div class="text_support">
-        <script id="message-user-template" type="text/template">
+      <div class="text-support">
+        <script id="messageUserTemplate" type="text/template">
           <div class="client">
             <span class="name">{{email}}</span>
             <span class="client message">
@@ -32,100 +32,70 @@
           </div>
         </script>
 
-        <script id="admin-template" type="text/template">
-          <div class="admin">
-            <span class="admin_name">Admin</span>
-            <span class="admin message"> {{message_admin}} </span>
+        <script id="adminTemplate" type="text/template">
+          <div class="adminBox">
+            <span class="admin-name">Admin</span>
+            <span class="adminBox message">{{message_admin}}</span>
             <!-- <label class="date">{{date}}</label> -->
           </div>
         </script>
-        <div id="messages" class="chat__messages"></div>
-        <!-- <div class="line"></div> -->
+        <div id="messages" class="chat-messages"></div>
       </div>
 
-      <div class="message_send">
+      <div class="message-send">
         <input
           type="text"
           placeholder="Write your message here"
-          id="message_user"
+          id="messageUser"
         />
-        <div class="send_message_button" id="send_message_button">
+        <div class="btn-send-message" id="btnSendMessage">
           <img src="/images/send.png" />
         </div>
       </div>
     </div>
 
-    <div class="chat chat_support" id="chat_help">
-      <div class="in_support_header">
+    <div class="chat chat-support" id="chatHelp">
+      <div class="in-support-header">
         <span>Start a support chat</span>
-        <div class="icon_close" onclick="closeChat();">
+        <div class="icon-close" onclick="closeChat()">
           <img src="/images/close.png" />
         </div>
       </div>
-      <div class="text_support text_help">
-        <div class="text_help">
+
+      <div class="text-support text-help" id="userTextArea">
+        <div class="text-help">
           <span>How can we help you?</span>
           <textarea
-            name="txt_help"
-            id="txt_help"
+            name="txt-help"
+            id="txtHelp"
             cols="30"
             rows="10"
             onkeydown="keyUpTextHelp(event)"
             maxlength="250"
           ></textarea>
-          <span class="charac_remaining">
-            <label id="charac_remaining">250</label> remaining characters</span
+          <span class="charac-remaining">
+            <label id="characRemaining">250</label>remaining characters</span
           >
         </div>
 
-        <div class="first_email">
+        <div class="first-email">
           <span>Your email</span>
           <input type="text" name="" id="email" />
         </div>
 
-        <div class="button">
-          <button class="btn_cancel">Cancel</button>
-          <button class="btn_start_chat" id="start_chat">Start chat</button>
+        <div class="btn">
+          <button class="btn-cancel">Cancel</button>
+          <button class="btn-start-chat" id="startChat">Start Chat</button>
         </div>
       </div>
     </div>
 
     <div>
-      <button class="btn_support" id="btn_support" onclick="openChat();">
-        <img src="/images/chat.png" /> Support
+      <button class="btn-support" id="btnSupport" onclick="openChat()">
+        <img src="/images/chat.png" />Support
       </button>
     </div>
   </body>
-
-  <script>
-    onLoad();
-    const chat = document.getElementById('chat_help');
-
-    function onLoad() {
-      fetch('http://localhost:3333/settings/admin').then((result) =>
-        result.json().then((response) => {
-          const buttonSupport = document.getElementById('btn_support');
-          if (!response.chat) {
-            buttonSupport.style.display = 'none';
-          }
-        })
-      );
-    }
-
-    function openChat() {
-      chat.style.display = 'block';
-    }
-
-    function closeChat() {
-      chat.style.display = 'none';
-    }
-
-    function keyUpTextHelp(event) {
-      const charac_remaining = document.getElementById('charac_remaining');
-      const length_text = event.target.value.length;
-      charac_remaining.innerHTML = Number(250) - Number(length_text);
-    }
-  </script>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>

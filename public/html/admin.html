@@ -9,32 +9,31 @@
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <title></title>
+    <title>Support chat | Admin</title>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
 
   <body>
-    <div id="list_users"></div>
+    <div id="listUsers"></div>
 
     <script id="template" type="x-tmpl-mustache">
       <div id="user{{id}}">
         <span class="email">Email: {{email}}</span>
-        <button class="btn_atd" onclick="call('{{id}}')">Start support</button>
+        <button class="btn-start-support" onclick="call('{{id}}')">Start Support</button>
       </div>
     </script>
 
     <div id="supports"></div>
 
-    <script id="admin_template" type="x-tmpl-mustache">
+    <script id="adminTemplate" type="x-tmpl-mustache">
       <div class="admin" id="admin">
-        <span class="in_support">Online support: <strong> {{email}}</strong></span>
-          <span></span>
-          <div class="admin_list_messages" id="allMessages{{id}}"></div>
+        <div class="in-support-title">Online support: <strong>{{email}}</strong></div>
+        <div class="admin-list-messages" id="allMessages{{id}}"></div>
 
-          <div class="admin_send_message">
-            <input type="text" id="send_message_{{id}}"/>
-            <button id="send" class="btn_send" onclick="sendMessage('{{id}}')">Send</button>
-          </div>
+        <div class="admin-send-message">
+          <input type="text" id="sendMessage{{id}}"/>
+          <button id="send" class="btn-send" onclick="sendMessage('{{id}}')">Send</button>
+        </div>
       </div>
     </script>
   </body>
