@@ -17,4 +17,4 @@ You're welcome to help out, just let me know :)
 ---
 
 Main technologies:  
-#node #express #typeorm #sqlite #socket-io
+#typescript #nodejs #expressjs #typeorm #sqlite #socket-io
